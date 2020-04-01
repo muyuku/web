@@ -7,6 +7,8 @@
 
 <script>
 import HelloWorld from './components/HelloWorld.vue'
+//import axios from 'axios'
+import jsonp from 'jsonp'
 
 export default {
   name: 'App',
@@ -17,7 +19,14 @@ export default {
     return{
       age:30
     }
-  }
+    
+  },
+  mounted(){
+        let url = "http://www.baidu.com"
+     jsonp(url,()=>{
+       
+     })
+   }
 }
 </script>
 
