@@ -22,9 +22,9 @@ export default {
     
   },
   mounted(){
-        let url = "http://www.baidu.com"
+        let url = "/article/302510"
      jsonp(url,()=>{
-       
+
      })
    }
 }
