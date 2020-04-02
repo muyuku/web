@@ -8,6 +8,7 @@
 
 //import axios from 'axios'
 
+import Storage from './storage'
 
 export default {
   name: 'App',
@@ -21,7 +22,7 @@ export default {
     
   },
   mounted(){
-        
+        Storage.setItem('user2',{d:2});
    }
 }
 </script>
