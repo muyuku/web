@@ -8,7 +8,7 @@
 
 //import axios from 'axios'
 
-import Storage from './storage'
+//import Storage from './storage'
 
 export default {
   name: 'App',
@@ -17,12 +17,15 @@ export default {
   },
   data(){
     return{
-     
+     res:{}
     }
     
   },
   mounted(){
-        Storage.setItem('user2',{d:2});
+    //本机加载json mock
+       this.axios.get('/mock/user/login.json').then((res)=>{
+         this.res = res;
+       });
    }
 }
 </script>
