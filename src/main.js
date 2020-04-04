@@ -5,14 +5,14 @@ import VueAxios from 'vue-axios'
 import App from './App.vue'
 //import env from './env'
 //mock开关
-const mock = true;
+const mock = false;
 if(mock){
   require('./mock/api');//import为预编译加载，所以需用require
 }
 //根据前端的跨域方式做调整 如代理
 //axios.defaults.baseURL = ' https://www.easy-mock.com/mock/5e877b032facda454720981f/mimall'; //基础值，easy-mock平台
 
-axios.defaults.baseURL = 'api'  //接口代理方式
+axios.defaults.baseURL = '/api'  //接口代理方式
 //方式2根据环境变量获取不同请求地址
 //axios.defaults.baseURL = env.baseURL;
 //超时设置
