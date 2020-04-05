@@ -21,7 +21,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss" scoped> //scoped局部部署
     .footer{
         height: 234px;
         border-top:4px solid #FF6600;
