@@ -6,7 +6,16 @@
                     <ul class="menu-wrap">
                         <li class="menu-item">
                             <a href="javascript:;">手机 电话卡</a>
-                            <div class="childre"></div>
+                            <div class="children">
+                                <ul v-for="(item,i) in menuList"  v-bind:key="i">
+                                    <li v-for="(sub,j) in item" v-bind:key="j">
+                                        <a v-bind:href="sub?'/#product/'+sub.id:''">
+                                            <img :src="sub?sub.img:'/imgs/item-box-1.png'" >
+                                            {{sub?sub.name:'Nokiaxx'}}
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
                         </li>
                         <li class="menu-item">
                             <a href="javascript:;">电视 盒子</a>
@@ -22,7 +31,9 @@
                         </li>
                         <li class="menu-item">
                             <a href="javascript:;">出行 穿戴</a>
-                            <div class="childre"></div>
+                            <div class="childre">
+                    
+                            </div>
                         </li>
                         <li class="menu-item">
                             <a href="javascript:;">智能 路由器</a>
@@ -92,7 +103,7 @@ export default {
                     shadowScale: 0.6
                 },
             },
-            slideList:[
+            slideList:[ //轮播数据
                 {
                     id:'42',
                     img:'/imgs/slider/slide-1.jpg'
@@ -113,6 +124,30 @@ export default {
                     id:'',
                     img:'/imgs/slider/slide-5'
                 }
+            ],
+            menuList:[  //菜单详情数据
+                [       //一维 行
+                    {   // 二维 列
+                        id:30,
+                        img:'/imgs/item-box-1.png',
+                        name:'Nokia1 5G'
+                    },
+                    {   
+                        id:30,
+                        img:'/imgs/item-box-2.png',
+                        name:'Nokia2'
+                    },
+                    {   // 二维 列
+                        id:30,
+                        img:'/imgs/item-box-3.jpg',
+                        name:'Nokia3'
+                    },
+                    {   // 二维 列
+                        id:30,
+                        img:'/imgs/item-box-4.jpg',
+                        name:'4G专区'
+                    },
+                ],[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0]
             ]
         }
         
@@ -155,6 +190,39 @@ export default {
                         }
                         &:hover{
                             background-color: $colorA;
+                            .children{
+                                display: block;
+                                }
+                        }
+                        .children{
+                            display: none;
+                            width: 962px;
+                            height: 451px;
+                            position: absolute;
+                            background-color: $colorG;
+                            top: 0;
+                            left: 264px;
+                            border:1px solid $colorH;
+                            ul{
+                                display: flex;
+                                justify-content: space-between;
+                                height: 75px;
+                                li{
+                                    height: 75px;
+                                    line-height: 75px;
+                                    flex: 1;//均分宽
+                                    padding-left: 23px;
+                                }
+                                a{
+                                    color: $colorB;
+                                    font-size: 14px;
+                                }
+                                img{
+                                    width: 42px;
+                                    height: 35px;
+                                    vertical-align: middle;//图片文字居中
+                                    margin-right: 15px;
+                            }   }
                         }
                         
                     }
