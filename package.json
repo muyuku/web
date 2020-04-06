@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve --mode=development",
+    "serve": "vue-cli-service serve --mode=evelopment",
     "test": "vue-cli-service serve --mode=test",
     "prev": "vue-cli-service serve --mode=prev",
     "build": "vue-cli-service build --mode=production",
@@ -28,6 +28,7 @@
     "babel-plugin-component": "^1.1.1",
     "element-ui": "^2.13.0",
     "eslint": "^5.16.0",
+    "eslint-plugin-html": "^6.0.1",
     "eslint-plugin-vue": "^5.0.0",
     "jsonp": "^0.2.1",
     "mockjs": "^1.1.0",
