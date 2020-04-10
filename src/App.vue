@@ -22,9 +22,23 @@ export default {
     
   },
   mounted(){
+      this.getUser();
+      this.getCarCount();
       
 
-   }
+   },
+   methods: {
+     getUser(){
+        this.axios.get('/user').then(()=>{
+            //to-do保存到vuex
+        })
+      },
+      getCarCount(){
+        this.axios.get('/carts/products/sum').then(()=>{
+
+        })
+      }
+   },
 }
 </script>
 

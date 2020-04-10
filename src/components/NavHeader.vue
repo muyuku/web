@@ -30,7 +30,7 @@
                                 <li class="product" v-for="(item,index) in phoneList" :key="index">
                                     <a v-bind:href="'/#product/'+item.id" target="_blank">
                                         <div class="pro-img">
-                                            <img :src="item.mainImage" :alt="item.subtitle">
+                                            <img v-lazy="item.mainImage" :alt="item.subtitle">
                                         </div>
                                         <div class="pro-name">{{item.name}}</div>
                                         <div class="pro-price">{{item.price | currency}}</div>
@@ -50,7 +50,7 @@
                                 <li class="product">
                                     <a href="" target="_blank">
                                         <div class="pro-img">
-                                            <img src="/imgs/nav-img/nav-3-2.jpg" alt="">
+                                            <img v-lazy="'/imgs/nav-img/nav-3-2.jpg'" alt="">
                                         </div>
                                         <div class="pro-name">CC9</div>
                                         <div class="pro-price">199元</div>
@@ -77,7 +77,7 @@
                                  <li class="product">
                                     <a href="" target="_blank">
                                         <div class="pro-img">
-                                            <img src="/imgs/nav-img/nav-3-2.jpg" alt="">
+                                            <img v-lazy="'/imgs/nav-img/nav-3-2.jpg'" alt="">
                                         </div>
                                         <div class="pro-name">CC9</div>
                                         <div class="pro-price">199元</div>
@@ -103,7 +103,7 @@ export default {
     name:'nav-header',
     data(){
         return {
-            username:'jack',
+            username:'',
             phoneList:[]
         }
     },
@@ -162,6 +162,7 @@ export default {
                     background-color: #FF6600;
                     text-align: center;
                     color: #ffffff;
+                    margin-right: 0;
                     .icon-cart{
                         @include bgImg(16px,12px,'/imgs/icon-cart-checked.png');
                         margin-right: 4px;

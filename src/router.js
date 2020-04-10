@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from './pages/home' //导入home页面
+import Login from './pages/login'
 import Index from './pages/index'
 import Product from './pages/product' //产品站
 import Detail from './pages/detail' //详情页面
@@ -39,6 +40,11 @@ export default new Router({ //导出router
                 },
 
             ]
+        },
+        {
+            path:'/login',
+            name:'login',
+            component:Login
         },
         {
             path:'/cart',

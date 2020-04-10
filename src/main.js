@@ -2,6 +2,8 @@ import Vue from 'vue'
 import router from './router' //导入router实例
 import axios from 'axios'
 import VueAxios from 'vue-axios'
+import VueLazyLoad from 'vue-lazyload'
+import VueCookie from 'vue-cookie'
 import App from './App.vue'
 //import env from './env'
 //mock开关
@@ -21,16 +23,24 @@ axios.defaults.timeout = 8000;
 //接口错误拦截
 axios.interceptors.response.use(function(response){ 
   let res = response.data; //获取接口返回值
+  let path = location.hash;
   if(res.status == 0){ 
     return res.data;
   }else if(res.status == 10){ //未登录
-    window.location.href = '/#/login';//#为哈希路由
+    if(path != '#/index'){
+      window.location.href = '/#/login';//#为哈希路由
+    }
   }else{
     alert(res.msg);
+    return Promise.reject(res);
   }
 });
 
 Vue.use(VueAxios,axios) //加载插件，后面可通过this调用
+Vue.use(VueCookie);
+Vue.use(VueLazyLoad,{
+  loading:'/imgs/loading-svg/loading-bars.svg'
+})
 Vue.config.productionTip = false
 
 new Vue({
