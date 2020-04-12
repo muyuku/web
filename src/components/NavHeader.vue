@@ -12,8 +12,8 @@
                     <a href="javascript:;" v-if="username">{{username}}</a>
                     <a href="javascript:;" v-if="!username" @click="login()">登录</a>
                     <a href="javascript:;" v-if="username">我的订单</a>
-                    <a href="javascript:;" v-if="username" @click="username=false">退出</a>
-                    <a href="javascript:;" class="my-cart" @click="goToCart()"><span class="icon-cart"></span>购物车</a>
+                    <a href="javascript:;" v-if="username" @click="outLogin()">退出</a>
+                    <a href="javascript:;" class="my-cart" @click="goToCart()"><span class="icon-cart"></span>购物车({{cartCount}})</a>
                 </div>
             </div>
         </div>
@@ -99,15 +99,25 @@
 </template>
 
 <script>
+import {mapState} from 'vuex' 
 export default {
     name:'nav-header',
     data(){
         return {
-            username:'',
+            
             phoneList:[]
         }
     },
-    filters:{ //过滤器 金额
+    computed: { 
+        // username(){
+        //     return this.$store.state.username; //.读取
+        // },
+        // cartCount(){
+        //     return this.$store.state.cartCount; //.读取
+        // }
+        ...mapState(['username','cartCount'])//辅助函数方式
+    },
+    filters:{ //过滤器 金11额
         currency(val){
             if(!val) return;
             return '￥' + val.toFixed(2) +'元'; //四舍五入2位
@@ -119,6 +129,16 @@ export default {
     methods: {
         login(){
             this.$router.push('/login');
+        },
+        outLogin(){
+            this.axios.post('/user/logout',{ 
+               
+            }).then(()=>{
+                
+                 this.$store.dispatch('saveUserName','');
+                    alert('退出成功');
+                 
+            })
         },
        
         getProductList(){

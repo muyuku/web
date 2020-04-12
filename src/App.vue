@@ -29,13 +29,13 @@ export default {
    },
    methods: {
      getUser(){
-        this.axios.get('/user').then(()=>{
-            //to-do保存到vuex
+        this.axios.get('/user').then((res)=>{
+            this.$store.dispatch('saveUserName',res.username);
         })
       },
       getCarCount(){
-        this.axios.get('/carts/products/sum').then(()=>{
-
+        this.axios.get('/carts/products/sum').then((res)=>{
+            this.$store.dispatch('saveCartCount',res);
         })
       }
    },

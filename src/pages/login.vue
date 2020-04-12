@@ -45,7 +45,7 @@
 </template>
 
 <script>
-//import { mapActions } from "vuex";
+import { mapActions } from "vuex";//变量多时使用辅助函数
 export default {
   name: "login",
   data() {
@@ -64,7 +64,8 @@ export default {
         })
         .then((res) => {
           this.$cookie.set("userId", res.id, { expires: "1M" });///保存用户名
-         // this.saveUserName(res.username);
+          // this.$store.dispatch('saveUserName',res.username);//派发action方式1
+          this.saveUserName(res.username)//派发action方式2辅助函数
           this.$router.push({
             name: "index",
             // params: {
@@ -73,7 +74,7 @@ export default {
           });
         });
     },
-    //...mapActions(["saveUserName"]),
+    ...mapActions(["saveUserName"]),//派发action方式2
 
     register() {
       this.axios.post("/user/register", {

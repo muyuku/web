@@ -3,7 +3,8 @@ import router from './router' //导入router实例
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 import VueLazyLoad from 'vue-lazyload'
-import VueCookie from 'vue-cookie'
+import VueCookie from  'vue-cookie'
+import store from './store' //默认读取index.js
 import App from './App.vue'
 //import env from './env'
 //mock开关
@@ -36,6 +37,7 @@ axios.interceptors.response.use(function(response){
   }
 });
 
+
 Vue.use(VueAxios,axios) //加载插件，后面可通过this调用
 Vue.use(VueCookie);
 Vue.use(VueLazyLoad,{
@@ -44,6 +46,8 @@ Vue.use(VueLazyLoad,{
 Vue.config.productionTip = false
 
 new Vue({
+  store,
   router, //加载路由,当路由名为routers时需要改为router:routers,
+  
   render: h => h(App),
 }).$mount('#app')
