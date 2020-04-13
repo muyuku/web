@@ -65,7 +65,7 @@ export default {
         .then((res) => {
           this.$cookie.set("userId", res.id, { expires: "1M" });///保存用户名
           // this.$store.dispatch('saveUserName',res.username);//派发action方式1
-          this.saveUserName(res.username)//派发action方式2辅助函数
+          this.saveUserName(res.username);//派发action方式2辅助函数
           this.$router.push({
             name: "index",
             // params: {

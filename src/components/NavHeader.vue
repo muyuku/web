@@ -13,7 +13,7 @@
                     <a href="javascript:;" v-if="!username" @click="login()">登录</a>
                     <a href="javascript:;" v-if="username">我的订单</a>
                     <a href="javascript:;" v-if="username" @click="outLogin()">退出</a>
-                    <a href="javascript:;" class="my-cart" @click="goToCart()"><span class="icon-cart"></span>购物车({{cartCount}})</a>
+                    <a href="javascript:;" class="my-cart" @click="goToCart()"><span class="icon-cart"></span >购物车({{cartCount}})</a>
                 </div>
             </div>
         </div>
@@ -99,7 +99,7 @@
 </template>
 
 <script>
-import {mapState} from 'vuex' 
+//import {mapState} from 'vuex' 
 export default {
     name:'nav-header',
     data(){
@@ -109,13 +109,13 @@ export default {
         }
     },
     computed: { 
-        // username(){
-        //     return this.$store.state.username; //.读取
-        // },
-        // cartCount(){
-        //     return this.$store.state.cartCount; //.读取
-        // }
-        ...mapState(['username','cartCount'])//辅助函数方式
+        username(){
+            return this.$store.state.username; //.读取
+        },
+        cartCount(){
+            return this.$store.state.cartCount; //.读取
+        }
+        // ...mapState(['username','cartCount'])//辅助函数方式
     },
     filters:{ //过滤器 金11额
         currency(val){
@@ -125,6 +125,7 @@ export default {
     },
     mounted(){
         this.getProductList();
+        this.getCarCount();
     },
     methods: {
         login(){
@@ -134,10 +135,15 @@ export default {
             this.axios.post('/user/logout',{ 
                
             }).then(()=>{
-                
-                 this.$store.dispatch('saveUserName','');
                     alert('退出成功');
-                 
+                    window.location.href = '/#/index';
+                    window.location.reload();
+            })
+        },
+        getCarCount(){
+            if(!this.username) return;
+            this.axios.get('/carts/products/sum').then((res)=>{
+                this.$store.dispatch('saveCartCount',res);
             })
         },
        

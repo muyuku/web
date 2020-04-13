@@ -22,22 +22,23 @@ export default {
     
   },
   mounted(){
-      this.getUser();
-      this.getCarCount();
+      // this.getUser();
+      // this.getCarCount();
       
 
    },
    methods: {
-     getUser(){
-        this.axios.get('/user').then((res)=>{
-            this.$store.dispatch('saveUserName',res.username);
-        })
-      },
-      getCarCount(){
-        this.axios.get('/carts/products/sum').then((res)=>{
-            this.$store.dispatch('saveCartCount',res);
-        })
-      }
+    //  getUser(){
+    //     this.axios.get('/user').then((res)=>{
+    //       if(!res) return;
+    //         this.$store.dispatch('saveUserName',res.username);
+    //     })
+    //   },
+    //   getCarCount(){
+    //     this.axios.get('/carts/products/sum').then((res)=>{
+    //         this.$store.dispatch('saveCartCount',res);
+    //     })
+    //   }
    },
 }
 </script>
