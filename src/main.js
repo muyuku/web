@@ -24,13 +24,14 @@ axios.defaults.timeout = 8000;
 //接口错误拦截
 axios.interceptors.response.use(function(response){ 
   let res = response.data; //获取接口返回值
-  // let path = location.hash;
+  let path = location.hash;
   if(res.status == 0){ 
     return res.data;
   }else if(res.status == 10){ //未登录
-    // if(path != '#/index'){
-    //   window.location.href = '/#/login';//#为哈希路由
-    // }
+    if(path != '#/index'){
+       window.location.href = '/#/login';//#为哈希路由 
+    }
+    return Promise.reject(res);
   }else{
     alert(res.msg);
     return Promise.reject(res);

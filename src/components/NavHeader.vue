@@ -135,14 +135,16 @@ export default {
             this.axios.post('/user/logout',{ 
                
             }).then(()=>{
-                    alert('退出成功');
-                    window.location.href = '/#/index';
-                    window.location.reload();
+                this.$cookie.set('userId','',{expires:'-1'});
+                this.$store.dispatch('saveUserName','');
+                this.$store.dispatch('saveCartCount','0');
+                alert('退出成功');
+
             })
         },
         getCarCount(){
             if(!this.username) return;
-            this.axios.get('/carts/products/sum').then((res)=>{
+            this.axios.get('/carts/products/sum').then((res=0)=>{
                 this.$store.dispatch('saveCartCount',res);
             })
         },
