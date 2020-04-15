@@ -138,7 +138,7 @@ export default {
                 this.$cookie.set('userId','',{expires:'-1'});
                 this.$store.dispatch('saveUserName','');
                 this.$store.dispatch('saveCartCount','0');
-                alert('退出成功');
+                this.$message.info("退出成功");
 
             })
         },
