@@ -35,9 +35,13 @@ axios.interceptors.response.use(function(response){
     }
     return Promise.reject(res);
   }else{
-    this.$message.warning(res.msg);
+    Message.warning(res.msg);
     return Promise.reject(res);
   }
+},(error)=>{ //拦截状态码请求
+  let res = error.response
+  Message.error(res.data.message);
+  return Promise.reject(error);
 });
 
 
