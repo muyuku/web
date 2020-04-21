@@ -301,7 +301,7 @@ export default {
               right: 30px;
               top: 17.5px;
               content: " ";
-              @include bgImg(10px, 15px, "/imgs/icon-arrow.png/");
+              @include bgImg(10px, 15px, "/imgs/icon-arrow.png");
             }
           }
           &:hover {
