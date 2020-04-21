@@ -9,7 +9,7 @@
               <div class="children">
                 <ul v-for="(item, i) in menuList" v-bind:key="i">
                   <li v-for="(sub, j) in item" v-bind:key="j">
-                    <a v-bind:href="sub ? '/#product/' + sub.id : ''">
+                    <a v-bind:href="sub ? '/#product/' + sub.id : ''" target="_blank">
                       <img :src="sub ? sub.img : '/imgs/item-box-1.png'" />
                       {{ sub ? sub.name : "Nokiaxx" }}
                     </a>
@@ -172,12 +172,12 @@ export default {
           img: "/imgs/slider/slide-3.jpg",
         },
         {
-          id: "",
-          img: "/imgs/slider/slide-4",
+          id: "45",
+          img: "/imgs/slider/slide-4.jpg",
         },
         {
-          id: "",
-          img: "/imgs/slider/slide-5",
+          id: "46",
+          img: "/imgs/slider/slide-5.jpg",
         },
       ],
       menuList: [
