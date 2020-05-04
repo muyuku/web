@@ -45,17 +45,17 @@ axios.interceptors.response.use(function(response){
 });
 
 
-Vue.use(VueAxios,axios) //加载插件，后面可通过this调用
+Vue.use(VueAxios,axios) 
 Vue.use(VueCookie);
 Vue.use(VueLazyLoad,{
   loading:'/imgs/loading-svg/loading-bars.svg'
 })
-Vue.prototype.$message = Message;//原型拓展对象
+Vue.prototype.$message = Message;
 Vue.config.productionTip = false
 
 new Vue({
   store,
-  router, //加载路由,当路由名为routers时需要改为router:routers,
+  router, 
   
   render: h => h(App),
 }).$mount('#app')

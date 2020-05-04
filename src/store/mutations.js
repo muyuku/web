@@ -6,6 +6,6 @@
         state.username = username; //改变状态
       },
       saveCartCount(state,count){
-        state.cartCount = count; //改变状态
+        state.cartCount = count; 
       }
  }
